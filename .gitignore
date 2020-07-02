@@ -1,1 +1,4 @@
+vendor
 .env
+.envrc
+composer.lock

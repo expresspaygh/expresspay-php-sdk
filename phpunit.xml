@@ -1,0 +1,21 @@
+<phpunit bootstrap="vendor/autoload.php">
+  <testsuites>
+    <testsuite name="tests">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+  <logging>
+    <!--<log type="coverage-html" target="/tmp/ExpayRefineTests/report" lowUpperBound="35" highLowerBound="70"/>-->
+    <!--<log type="coverage-clover" target="/tmp/ExpayRefineTests/coverage.xml"/>-->
+    <!--<log type="coverage-php" target="/tmp/ExpayRefineTests/coverage.serialized"/>-->
+    <!--<log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>-->
+    <log type="junit" target="/tmp/ExpayRefineTests/logfile.xml"/>
+    <log type="testdox-html" target="/tmp/ExpayRefineTests/testdox.html"/>
+    <log type="testdox-text" target="/tmp/ExpayRefineTests/testdox.txt"/>
+  </logging>
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">src</directory>
+    </whitelist>
+  </filter>
+</phpunit>
