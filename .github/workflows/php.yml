@@ -14,6 +14,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Install dependencies
+      if: steps.composer-cache.outputs.cache-hit != 'true'
+      run: composer install --prefer-dist --no-progress --no-suggest
+
     - name: Validate composer.json and composer.lock
       run: composer validate
       
@@ -25,10 +29,6 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-node-
-
-    - name: Install dependencies
-      if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: Run test suite
       run: composer run-script test
