@@ -31,4 +31,4 @@ jobs:
           ${{ runner.os }}-node-
 
     - name: Run test suite
-      run: composer run-script test
+      run: make phpunit
