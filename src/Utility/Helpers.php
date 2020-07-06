@@ -2,8 +2,6 @@
 
 namespace Expay\SDK\Utility;
 
-require_once (dirname(__FILE__) . "/../../vendor/autoload.php");
-
 use Exception;
 use Expay\Refine\Filter;
 use Expay\Refine\Rules\Validate;

@@ -2,8 +2,6 @@
 
 namespace Expay\SDK;
 
-require_once (dirname(__FILE__) . "/../vendor/autoload.php");
-
 use Exception;
 use GuzzleHttp\Client;
 use Expay\SDK\Utility\Config;
