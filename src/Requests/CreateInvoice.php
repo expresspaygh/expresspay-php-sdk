@@ -75,7 +75,7 @@ class CreateInvoice
       $this->make['description'] = $filter->output["order_desc"];
       $this->make['phone_number'] = $filter->output["phone_number"];
       $this->make['email'] = $filter->output["email"];
-      $this->make['account_name'] = $filter->output["account_number"];
+      $this->make['account_name'] = $filter->output["account_name"];
       $this->make['redirect-url'] = $filter->output["redirect_url"];
       $this->make['send_email'] = !empty($filter->output["email"]) ? "TRUE" : "FALSE";
       $this->make['send_sms'] = !empty($filter->output["phone_number"]) ? "TRUE" : "FALSE";
