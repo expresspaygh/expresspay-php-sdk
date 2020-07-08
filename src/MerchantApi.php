@@ -106,7 +106,7 @@ class MerchantApi
    * @param  mixed $redirect_url
    * @return void
    */
-  public function create_invoice(string $order_id, string $currency, float $amount, string $account_number, string $order_desc, string $account_name, stirng $phone_number, stirng $email, string $redirect_url)
+  public function create_invoice(string $order_id, string $currency, float $amount, string $account_number, string $order_desc, string $account_name, string $phone_number, string $email, string $redirect_url)
   {
     try {
       $func_vars = get_defined_vars();
