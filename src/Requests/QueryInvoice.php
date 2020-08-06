@@ -4,7 +4,6 @@ namespace Expay\SDK\Requests;
 
 use Exception;
 use Expay\SDK\Utility\Config;
-use Expay\SDK\Utility\Helpers;
 use Expay\SDK\Exceptions\BadRequest;
 
 /**
@@ -62,13 +61,10 @@ class QueryInvoice
     }
 
     try {
-      $filter = new Helpers($this->request);
-      $filter = $filter->clean_query_request();
-
       $this->make["merchant-id"] = $this->config->get_merchant_id();
       $this->make["api-key"] = $this->config->get_merchant_key();
-
-      $this->make["token"] = $filter->output["token"];
+      
+      $this->make["token"] = $this->request["token"];
 
     } catch(Exception $e) {
       throw new BadRequest($e->getMessage());

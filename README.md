@@ -12,3 +12,7 @@ composer require expresspaygh/exp-php-sdk
 
 # Demo / Test
 [https://github.com/expresspaygh/exp-demos]
+
+-------------------
+
+# How to use

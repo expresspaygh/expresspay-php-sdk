@@ -24,37 +24,8 @@ class HelperTest extends TestCase
   public function __construct()
   {
     parent::__construct();
-    $this->faker=Factory::create();
-  }
     
-  /**
-   * testCleanCreateInvoiceRequest
-   *
-   * @return void
-   */
-  public function testCleanCreateInvoiceRequest()
-  {
-    $request = [
-      "order_id" => $this->faker->ean13,
-      "currency" => "GHS",
-      "amount" => round($this->faker->randomFloat, 2),
-      "account_number" => $this->faker->isbn13,
-      "order_desc" => $this->faker->sentence,
-      "account_name" => $this->faker->name,
-      "phone_number" => $this->faker->e164PhoneNumber,
-      "email" => $this->faker->freeEmail,
-      "redirect_url" => $this->faker->url
-    ];
-
-    $helper = new Helpers($request);
-    $helper = $helper->clean_create_invoice_request();
-
-    $this->assertIsObject($helper);
-    $this->assertIsArray($helper->output);
-    $this->assertObjectHasAttribute('status', $helper);
-    $this->assertObjectHasAttribute('message', $helper);
-    $this->assertTrue(!empty($helper->output));
-    $this->assertCount(9, $helper->output);
+    $this->faker=Factory::create();
   }
   
   /**
@@ -87,49 +58,5 @@ class HelperTest extends TestCase
     $this->assertObjectHasAttribute('message', $helper);
     $this->assertTrue(!empty($helper->output));
     $this->assertCount(11, $helper->output);
-  }
-  
-  /**
-   * testCleanCheckoutRequest
-   *
-   * @return void
-   */
-  public function testCleanCheckoutRequest()
-  {
-    $request = [
-      "token" => $this->faker->uuid
-    ];
-
-    $helper = new Helpers($request);
-    $helper = $helper->clean_checkout_request();
-
-    $this->assertIsObject($helper);
-    $this->assertIsArray($helper->output);
-    $this->assertObjectHasAttribute('status', $helper);
-    $this->assertObjectHasAttribute('message', $helper);
-    $this->assertTrue(!empty($helper->output));
-    $this->assertCount(1, $helper->output);
-  }
-  
-  /**
-   * testCleanQueryRequest
-   *
-   * @return void
-   */
-  public function testCleanQueryRequest()
-  {
-    $request = [
-      "token" => $this->faker->uuid
-    ];
-
-    $helper = new Helpers($request);
-    $helper = $helper->clean_query_request();
-
-    $this->assertIsObject($helper);
-    $this->assertIsArray($helper->output);
-    $this->assertObjectHasAttribute('status', $helper);
-    $this->assertObjectHasAttribute('message', $helper);
-    $this->assertTrue(!empty($helper->output));
-    $this->assertCount(1, $helper->output);
   }
 }

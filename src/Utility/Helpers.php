@@ -55,40 +55,6 @@ class Helpers
   }
   
   /**
-   * clean_create_invoice_request
-   *
-   * @return void
-   */
-  public function clean_create_invoice_request()
-  {
-    $emailRules=["email"=>"required|email"];
-    $urlRules=["redirect_url"=>"required|url"];
-
-    $this->fields = [
-      "order_id" => [new CleanString, new CleanTags],
-      "currency" => [new CleanString, new CleanTags],
-      "amount" => [new PHPFilter(["float"])],
-      "account_number" => [new CleanString, new CleanTags],
-      "order_desc" => [new CleanString, new CleanTags],
-      "account_name" => [new CleanString, new CleanTags],
-      "phone_number" => [new CleanString, new CleanTags],
-      "email" => [new Validate($emailRules), new CleanTags],
-      "redirect_url" => [new Validate($urlRules)],
-    ];
-
-    try {
-      $filterRun = (object) $this->run_filter();
-      if($filterRun->status != 0) {
-        throw new InvalidField($filterRun->message);
-      }
-
-      return $filterRun;
-    } catch(Exception $e) {
-      throw new InvalidField($e->getMessage());
-    }
-  }
-  
-  /**
    * clean_submit_request
    *
    * @return void
@@ -111,52 +77,6 @@ class Helpers
       "last_name" => (!empty($this->data['last_name'])) ? [new CleanString, new CleanTags] : [new Nullable],
       "phone_number" => (!empty($this->data['phone_number'])) ? [new CleanString, new CleanTags] : [new Nullable],
       "email" => (!empty($this->data['email'])) ? [new Validate($emailRules), new CleanTags] : [new Nullable],
-    ];
-
-    try {
-      $filterRun = (object) $this->run_filter();
-      if($filterRun->status != 0) {
-        throw new InvalidField($filterRun->message);
-      }
-
-      return $filterRun;
-    } catch(Exception $e) {
-      throw new InvalidField($e->getMessage());
-    }
-  }
-  
-  /**
-   * clean_checkout_request
-   *
-   * @return void
-   */
-  public function clean_checkout_request()
-  {
-    $this->fields = [
-      "token" => [new CleanString, new CleanTags]
-    ];
-
-    try {
-      $filterRun = (object) $this->run_filter();
-      if($filterRun->status != 0) {
-        throw new InvalidField($filterRun->message);
-      }
-
-      return $filterRun;
-    } catch(Exception $e) {
-      throw new InvalidField($e->getMessage());
-    }
-  }
-  
-  /**
-   * clean_query_request
-   *
-   * @return void
-   */
-  public function clean_query_request()
-  {
-    $this->fields = [
-      "token" => [new CleanString, new CleanTags]
     ];
 
     try {

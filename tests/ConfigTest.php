@@ -23,7 +23,8 @@ class ConfigTest extends TestCase
   public function __construct()
   {
     parent::__construct();
-    $this->config = new Config("121", "VYYG9HyJhf4Bfzv6qGUx");
+    
+    $this->config = new Config("089237783227", "JKR91Vs1zEcuAj9LwMXQu-H3LPrDq1XCKItTKpmLY1-XsBgCnNpkDT1GER8ih9f-UTYoNINatMbreNIRavgu-89wPOnY6F7mz1lXP3LZ");
   }
     
   /**

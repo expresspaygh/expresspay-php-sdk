@@ -7,9 +7,7 @@ use GuzzleHttp\Client;
 use Expay\SDK\Utility\Config;
 use Expay\SDK\Exceptions\BadRequest;
 use Expay\SDK\Requests\QueryInvoice;
-use Expay\SDK\Requests\CreateInvoice;
 use Expay\SDK\Requests\SubmitInvoice;
-use Expay\SDK\Requests\CheckoutRedirect;
 
 /**
  * MerchantApi
@@ -91,38 +89,7 @@ class MerchantApi
 
     return 0;
   }
-  
-  /**
-   * create_invoice
-   *
-   * @param  mixed $order_id
-   * @param  mixed $currency
-   * @param  mixed $amount
-   * @param  mixed $account_number
-   * @param  mixed $order_desc
-   * @param  mixed $account_name
-   * @param  mixed $phone_number
-   * @param  mixed $email
-   * @param  mixed $redirect_url
-   * @return void
-   */
-  public function create_invoice(string $order_id, string $currency, float $amount, string $account_number, string $order_desc, string $account_name, string $phone_number, string $email, string $redirect_url)
-  {
-    try {
-      $func_vars = get_defined_vars();
 
-      $requestAccessor = new CreateInvoice($func_vars, $this->config);
-      $request = $requestAccessor->make()->toArray();
-
-      $response = $this->client->request("POST", "invoice.php", ["form_params" => $request]);
-
-      return json_decode($response->getBody());
-
-    } catch(Exception $e) {
-      throw new BadRequest($e->getMessage());
-    }
-  }
-  
   /**
    * submit
    *
@@ -137,9 +104,9 @@ class MerchantApi
    * @param  mixed $last_name
    * @param  mixed $phone_number
    * @param  mixed $email
-   * @return void
+   * @return array
    */
-  public function submit(string $currency, float $amount, string $order_id, string $order_desc, string $redirect_url, string $account_number, string $order_img_url = null, string $first_name = null, string $last_name = null, string $phone_number = null, string $email = null)
+  public function submit(string $currency, float $amount, string $order_id, string $order_desc, string $redirect_url, string $account_number, string $order_img_url = null, string $first_name = null, string $last_name = null, string $phone_number = null, string $email = null) : array
   {
     try {
       $func_vars = get_defined_vars();
@@ -149,7 +116,7 @@ class MerchantApi
 
       $response = $this->client->request("POST", "submit.php", ["form_params" => $request]);
 
-      return json_decode($response->getBody());
+      return json_decode($response->getBody(), true);
 
     } catch(Exception $e) {
       throw new BadRequest($e->getMessage());
@@ -160,19 +127,12 @@ class MerchantApi
    * checkout
    *
    * @param  mixed $token
-   * @return void
+   * @return string
    */
-  public function checkout(string $token)
+  public function checkout(string $token) : string
   {
     try {
-      $func_vars = get_defined_vars();
-
-      $requestAccessor = new CheckoutRedirect($func_vars);
-      $request = $requestAccessor->make()->toArray();
-
-		  header(sprintf("Location: %s/checkout.php?%s", $this->base_url, $request['token']));
-      exit();
-
+      return sprintf("%scheckout.php?token=%s", $this->base_url, $token);
     } catch(Exception $e) {
       throw new BadRequest($e->getMessage());
     }
@@ -182,9 +142,9 @@ class MerchantApi
    * query
    *
    * @param  mixed $token
-   * @return void
+   * @return array
    */
-  public function query(string $token)
+  public function query(string $token) : array
   {
     try {
       $func_vars = get_defined_vars();
@@ -194,7 +154,7 @@ class MerchantApi
 
       $response = $this->client->request("POST", "query.php", ["form_params" => $request]);
 
-      return json_decode($response->getBody());
+      return json_decode($response->getBody(), true);
 
     } catch(Exception $e) {
       throw new BadRequest($e->getMessage());
