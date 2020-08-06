@@ -48,8 +48,9 @@ class MerchantApi
   /**
    * __construct
    *
-   * @param  mixed $merchant_id
-   * @param  mixed $merchant_key
+   * @param  string $merchant_id
+   * @param  string $merchant_key
+   * @param  string $environment
    * @return void
    */
   public function __construct(string $merchant_id, string $merchant_key, string $environment)
@@ -93,17 +94,17 @@ class MerchantApi
   /**
    * submit
    *
-   * @param  mixed $currency
-   * @param  mixed $amount
-   * @param  mixed $order_id
-   * @param  mixed $order_desc
-   * @param  mixed $redirect_url
-   * @param  mixed $account_number
-   * @param  mixed $order_img_url
-   * @param  mixed $first_name
-   * @param  mixed $last_name
-   * @param  mixed $phone_number
-   * @param  mixed $email
+   * @param  string $currency
+   * @param  float $amount
+   * @param  string $order_id
+   * @param  string $order_desc
+   * @param  string $redirect_url
+   * @param  string $account_number
+   * @param  string | null $order_img_url
+   * @param  string | null $first_name
+   * @param  string | null $last_name
+   * @param  string | null $phone_number
+   * @param  string | null $email
    * @return array
    */
   public function submit(string $currency, float $amount, string $order_id, string $order_desc, string $redirect_url, string $account_number, string $order_img_url = null, string $first_name = null, string $last_name = null, string $phone_number = null, string $email = null) : array
@@ -126,7 +127,7 @@ class MerchantApi
   /**
    * checkout
    *
-   * @param  mixed $token
+   * @param  string $token
    * @return string
    */
   public function checkout(string $token) : string
@@ -141,7 +142,7 @@ class MerchantApi
   /**
    * query
    *
-   * @param  mixed $token
+   * @param  string $token
    * @return array
    */
   public function query(string $token) : array

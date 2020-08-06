@@ -1,4 +1,3 @@
-## composer-test-packages: Command to install packages required for testing
 ## phpunit: Run PHPUnit tests
 phpunit:
 	composer run test

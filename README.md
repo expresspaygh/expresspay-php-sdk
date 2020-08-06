@@ -1,9 +1,11 @@
 # Expresspay PHP SDK
+
 A simple library for PHP integrators
 
 ------------------
 
 # Install
+
 * Install composer for your environment - (Composer)[https://getcomposer.org/download/]
 * Import package via composer using the command below
 ```php
@@ -13,20 +15,50 @@ composer require expresspaygh/exp-php-sdk
 -------------------
 
 # Demo / Test
-[https://github.com/expresspaygh/exp-demos]
+
+* Browser Demo: [https://github.com/expresspaygh/exp-demos/tree/master/exp-php-sdk-demo]
+* Unit Test: `make phpunit` or `composer run test`
 
 -------------------
 
 # How to use
 
+## Allowed Environments
+
+* Sandbox - "sandbox"
+* Production - "production"
+
+-------------------
+
 ## Submit request
+
 This request creates a new invoice to process a payment with, below you will find a test request and response.
 
 ```php
-use Expay\SDK\MerchantApi;
+use Expay\SDK\MerchantApi as ExpressPayMerchantApi;
 
-$merchantApi = new MerchantApi($this->merchant_id, $this->merchant_key, $this->environment);
+/**
+ * $this->merchant_id = Your expressPay merchant id
+ * $this->merchant_key = Your expressPay merchant api key
+ * $this->environment = Your preferred environment, allowed params ('sandbox' or 'production')
+ */
+$merchantApi = new ExpressPayMerchantApi($this->merchant_id, $this->merchant_key, $this->environment);
 
+/**
+ * submit
+ *
+ * string $currency
+ * float $amount
+ * string $order_id
+ * string $order_desc
+ * string $redirect_url
+ * string $account_number
+ * string | null $order_img_url
+ * string | null $first_name
+ * string | null $last_name
+ * string | null $phone_number
+ * string | null $email
+ */
 $response = $merchantApi->submit(
   "GHS",
   20.00,
