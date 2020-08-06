@@ -138,7 +138,7 @@ string(120) "https://sandbox.expresspaygh.com/api/checkout.php?token=43165f2bcf9
 
 -------------------
 
-# Query request - Before payment
+## Query request - Before payment
 
 This request checks the payment status for an invoice on expressPay, below you will find an example request and response for 
 an unpaid invoice.
@@ -184,7 +184,7 @@ array(6) {
 
 -------------------
 
-# Query request - After payment
+## Query request - After payment
 
 This request checks the payment status for an invoice on expressPay, below you will find an example request and response for 
 a paid invoice.
