@@ -161,7 +161,8 @@ class MerchantApiTest extends TestCase
  
     $token = &$this->getToken();
 
-    $response = $merchantApi->query($token);
+    $response = $merchantApi->query("96125f2be7c17358e3.050261945f2be7c1735938.6884269276125f2be7c173");
+    var_dump($response);
 
     $this->assertIsArray($response);
     $this->assertTrue(!empty($response));
