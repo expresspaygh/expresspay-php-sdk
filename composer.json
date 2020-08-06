@@ -3,7 +3,6 @@
   "description": "A simple library for PHP integrators",
   "type": "library",
   "license": "MIT",
-  "version": "1.0.0",
   "authors": [
     {
       "name": "Jeffery Osei",
