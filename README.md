@@ -32,7 +32,7 @@ composer require expresspaygh/exp-php-sdk
 
 ## Submit request
 
-This request creates a new invoice to process a payment with, below you will find an example request and response.
+This request creates a new invoice to process a payment, below you will find an example request and response.
 
 ```php
 require_once('./vendor/autoload.php');
