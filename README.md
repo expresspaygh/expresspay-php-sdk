@@ -4,6 +4,8 @@ A simple library for PHP integrators
 ------------------
 
 # Install
+* Install composer for your environment - (Composer)[https://getcomposer.org/download/]
+* Import package via composer using the command below
 ```php
 composer require expresspaygh/exp-php-sdk
 ```
