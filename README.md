@@ -15,11 +15,9 @@ composer require expresspaygh/exp-php-sdk
 
 -------------------
 
-## How to use
+# How to use
 
--------------------
-
-# Submit request
+## Submit request
 This request creates a new invoice to process a payment with, below you will find a test request and response.
 
 ```php
