@@ -1,3 +1,4 @@
+![expressPay Logo](https://expresspaygh.com/images/logo.png)
 # Expresspay PHP SDK
 
 A simple library for PHP integrators
