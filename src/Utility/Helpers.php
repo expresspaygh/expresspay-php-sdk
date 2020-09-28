@@ -9,6 +9,7 @@ use Expay\Refine\Rules\CleanTags;
 use Expay\Refine\Rules\PHPFilter;
 use Expay\Refine\Rules\CleanString;
 use Expay\SDK\Exceptions\InvalidField;
+use Expay\Refine\Rules\Nullable;
 
 /**
  * Helpers
